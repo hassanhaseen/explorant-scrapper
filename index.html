@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorant Account Info Scrapper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Explorant Account Information Scrapper</h1>
+        <form id="scrapeForm">
+            <label for="link" style="color: white;">Enter Explorant Link:</label>
+            <input type="text" id="link" placeholder="Paste your link here" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result" class="hidden">
+            <textarea id="content" readonly></textarea>
+            <button id="copyButton">COPY</button>
+        </div>
+    </div>
+    <script src="src.js"></script>
+</body>
+</html>
