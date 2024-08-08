@@ -2,7 +2,7 @@ document.getElementById("passwordForm").addEventListener("submit", function(even
     event.preventDefault();
 
     const enteredPassword = document.getElementById("password").value;
-    const correctPassword = "YourSecurePassword"; // Replace with your actual password
+    const correctPassword = "chucha326"; // Replace with your actual password
 
     if (enteredPassword === correctPassword) {
         document.getElementById("passwordContainer").classList.add("hidden");
