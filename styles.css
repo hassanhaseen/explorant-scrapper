@@ -1,97 +1,57 @@
+.hidden {
+    display: none;
+}
+
+/* Existing styles */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #222831;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: white;
 }
 
 .container {
-    background-color: #31363F;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #333;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
     text-align: center;
-    background: -webkit-linear-gradient(45deg, hsla(120, 6%, 90%, 1) 0%, rgb(75, 91, 158) 100%);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    color: #fff;
+    color: #f00;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input[type="text"] {
+input[type="text"],
+input[type="password"],
+textarea {
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: white;
 }
 
 button {
-    background: #76ABAE;
-    color: white;
     padding: 10px;
-    border: none;
     border-radius: 4px;
+    border: none;
+    background-color: #f00;
+    color: white;
     cursor: pointer;
-    font-size: 15px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    color: black;
-    background: #EEEEEE;
+    background-color: #c00;
 }
 
-#result {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hidden {
-    display: none;
-}
-
-textarea {
-    width: 100%;
-    height: 300px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    resize: none;
-    margin-bottom: 10px;
-}
-
-#copyButton {
-    background: #76ABAE;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-#copyButton:hover {
-    color: black;
-    background: #EEEEEE;
-}
+/* Adjust the styles according to your existing ones */
