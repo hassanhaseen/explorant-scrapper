@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="passwordContainer">
+        <h1>Password Required</h1>
+        <form id="passwordForm">
+            <label for="password" style="color: white;">Enter Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="container hidden" id="appContainer">
         <h1>Explorant Account Information Scrapper</h1>
         <form id="scrapeForm">
             <label for="link" style="color: white;">Enter Explorant Link:</label>
@@ -19,6 +28,7 @@
             <button id="copyButton">COPY</button>
         </div>
     </div>
+
     <script src="src.js"></script>
 </body>
 </html>
