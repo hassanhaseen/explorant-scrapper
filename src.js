@@ -1,3 +1,17 @@
+document.getElementById("passwordForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const enteredPassword = document.getElementById("password").value;
+    const correctPassword = "YourSecurePassword"; // Replace with your actual password
+
+    if (enteredPassword === correctPassword) {
+        document.getElementById("passwordContainer").classList.add("hidden");
+        document.getElementById("appContainer").classList.remove("hidden");
+    } else {
+        alert("Incorrect password. Access denied.");
+    }
+});
+
 document
   .getElementById("scrapeForm")
   .addEventListener("submit", function (event) {
