@@ -80,18 +80,3 @@ textarea {
     resize: none;
     margin-bottom: 10px;
 }
-
-#copyButton {
-    background: #76ABAE;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-#copyButton:hover {
-    color: black;
-    background: #EEEEEE;
-}
