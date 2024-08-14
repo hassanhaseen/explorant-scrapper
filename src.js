@@ -23,8 +23,6 @@ function fetchContent(link) {
 }
 
 function processContent(doc) {
-  let hasNm = 0; // Adjust this value as needed
-
   let data = doc.getElementsByClassName("card-subtitle");
   let skins = [];
   let battlePasses = [];
@@ -39,8 +37,20 @@ function processContent(doc) {
       skins.push(text);
     }
   }
-  let val = hasNm == 1 ? 6 : 0;
-  skins.splice(0, 4 + val); // skips store items
+
+  let storeData = doc.getElementsByClassName(
+    "w-100 mt-4 mb-3 text-center text-muted"
+  );
+
+  let doStoreSplice = true;
+  for (let i = 0; i < storeData.length; i++) {
+    if (storeData[i].innerHTML.trim() == "<h5>No Store Skins to Show</h5>") {
+      doStoreSplice = false;
+      break;
+    }
+  }
+
+  if (doStoreSplice) skins.splice(0, 4); // skips store items
 
   let episodes = [];
   let acts = doc.getElementsByClassName("list-item-heading");
@@ -90,7 +100,6 @@ function processContent(doc) {
       rankRegex.lastIndex = 0;
     }
   }
-
 
   let finalRanks = {};
   for (let i = 0; i < episodes.length; i++) {
@@ -153,12 +162,11 @@ function displayContent(skinsData) {
 
   if (Object.keys(skinsData.ranks).length > 0) {
     content += `\n☑️ LAST ACT RANKs:\n`;
-  
+
     for (let episode in skinsData.ranks) {
       content += `   ✅ ${episode}: ${skinsData.ranks[episode]}\n`;
     }
   }
-  
 
   content += `\n☑️ Account Level = ${skinsData.level}\n`;
   content += `☑️ ${skinsData.vp} EXTRA VP (VALORANT POINTS) IN ACCOUNT.\n`;
@@ -168,6 +176,7 @@ function displayContent(skinsData) {
   content += `\n   ✅ PASSWORD.`;
   content += `\n   ✅ EMAIL ACCESS.\n`;
   content += `\n⚠️If you face any issues, please message the seller before leaving negative feedback. The seller will work with you to solve any problems.\n`;
+  content += `\n🚫After Buying if you get the account banned/locked, Seller will NOT be responsible for it!\n`;
 
   document.getElementById("content").value = content;
 }
@@ -185,34 +194,35 @@ document.getElementById("copyButton").addEventListener("click", function () {
   }
 });
 
-
-document.getElementById("postPurchaseButton").addEventListener("click", function () {
-  // Custom predefined text
-  const customText = `📩 Post Purchase Instructions📩
+document
+  .getElementById("postPurchaseButton")
+  .addEventListener("click", function () {
+    // Custom predefined text
+    const customText = `📩 Post Purchase Instructions📩
 
 🌐 Website for Email Login: https://mail.zsthost.com/
 
 🙏 After buying, please change the email address to your own and leave a good feedback after confirming the order. ❤️`;
 
-  // Create a temporary textarea element to hold the text
-  const tempTextarea = document.createElement("textarea");
-  tempTextarea.value = customText;
+    // Create a temporary textarea element to hold the text
+    const tempTextarea = document.createElement("textarea");
+    tempTextarea.value = customText;
 
-  // Add the textarea to the document so it's part of the DOM
-  document.body.appendChild(tempTextarea);
+    // Add the textarea to the document so it's part of the DOM
+    document.body.appendChild(tempTextarea);
 
-  // Select the text inside the textarea
-  tempTextarea.select();
-  tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+    // Select the text inside the textarea
+    tempTextarea.select();
+    tempTextarea.setSelectionRange(0, 99999); // For mobile devices
 
-  try {
-    // Execute the copy command
-    document.execCommand("copy");
-    alert("Post Purchase Info copied to clipboard!");
-  } catch (err) {
-    alert("Failed to copy custom text.");
-  }
+    try {
+      // Execute the copy command
+      document.execCommand("copy");
+      alert("Post Purchase Info copied to clipboard!");
+    } catch (err) {
+      alert("Failed to copy custom text.");
+    }
 
-  // Remove the temporary textarea from the document
-  document.body.removeChild(tempTextarea);
-});
+    // Remove the temporary textarea from the document
+    document.body.removeChild(tempTextarea);
+  });
