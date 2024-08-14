@@ -42,15 +42,21 @@ function processContent(doc) {
     "w-100 mt-4 mb-3 text-center text-muted"
   );
 
-  let doStoreSplice = true;
+
+  let storeItemCount = 4;
+  let nmItemCount = 6;
+
   for (let i = 0; i < storeData.length; i++) {
-    if (storeData[i].innerHTML.trim() == "<h5>No Store Skins to Show</h5>") {
-      doStoreSplice = false;
-      break;
-    }
+    if (storeData[i].innerHTML.trim() == "<h5>No Store Skins to Show</h5>")
+      storeItemCount = 0;
+    else if (storeData[i].innerHTML.trim() == "<h5>No Nightmarket Skins to Show</h5>")
+      nmItemCount = 0;
   }
 
-  if (doStoreSplice) skins.splice(0, 4); // skips store items
+  
+  console.log(`Store Count = ${storeItemCount} & NM COUNT = ${nmItemCount}`);
+
+  skins.splice(0, storeItemCount + nmItemCount); // skips store items
 
   let episodes = [];
   let acts = doc.getElementsByClassName("list-item-heading");
@@ -105,13 +111,12 @@ function processContent(doc) {
   for (let i = 0; i < episodes.length; i++) {
     let rankVal = Number(ranks[i]);
     if (episodes[i] in finalRanks) {
-      if (finalRanks[episodes[i]] < rankVal) {
-        finalRanks[episodes[i]] = rankVal;
-      }
+      if (finalRanks[episodes[i]] < rankVal) finalRanks[episodes[i]] = rankVal;
     } else {
       finalRanks[episodes[i]] = rankVal;
     }
   }
+
   Object.keys(finalRanks).map((e) => (finalRanks[e] = rankmap[finalRanks[e]]));
 
   //level
@@ -194,9 +199,7 @@ document.getElementById("copyButton").addEventListener("click", function () {
   }
 });
 
-document
-  .getElementById("postPurchaseButton")
-  .addEventListener("click", function () {
+document.getElementById("postPurchaseButton").addEventListener("click", function () {
     // Custom predefined text
     const customText = `📩 Post Purchase Instructions📩
 
@@ -225,4 +228,4 @@ document
 
     // Remove the temporary textarea from the document
     document.body.removeChild(tempTextarea);
-  });
+});
