@@ -16,7 +16,8 @@ A web application that scrapes and displays Valorant account details from a give
 
 ## Usage
 
-1. Open the web application at link: https://hassanhaseen.github.io/explorant-scrapper/
+1. Open the web application at the link: https://hassanhaseen.github.io/explorant-scrapper/
 2. Enter the Valorant account Explorant link in the input box.
 3. Click "Submit" to scrape and display the account details.
-4. Use the "COPY" button to easily copy the content.
+4. Use the "Copy Account Info" button to copy the account details easily.
+5. Use the "Copy Post Purchase Info" button to copy the Post Purchase info easily.
