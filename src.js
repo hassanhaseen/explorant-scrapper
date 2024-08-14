@@ -133,33 +133,41 @@ function processContent(doc) {
 }
 
 function displayContent(skinsData) {
-  let content = `❤️ In-Game Details ❤️\n\n🖤 WEAPON SKINS 🖤\n\n`;
+  let content = `❤️ In-Game Details ❤️\n`;
 
-  skinsData.skins.forEach((skin) => {
-    content += `   ✅ ${skin}\n`;
-  });
+  if (skinsData.skins.length > 0) {
+    content += `\n☑️ WEAPON SKINS:-\n`;
 
-  content += `\n☑️ BATTLEPASS:\n`;
-
-  skinsData.battlePasses.forEach((bp) => {
-    content += `   ✅ ${bp}\n`;
-  });
-
-  content += `\n☑️ LAST ACT RANKs:\n`;
-  for (let episode in skinsData.ranks) {
-    content += `   ✅ ${episode}: ${skinsData.ranks[episode]}\n`;
+    skinsData.skins.forEach((skin) => {
+      content += `   ✅ ${skin}\n`;
+    });
   }
+
+  if (skinsData.battlePasses.length > 0) {
+    content += `\n☑️ BATTLEPASS:\n`;
+
+    skinsData.battlePasses.forEach((bp) => {
+      content += `   ✅ ${bp}\n`;
+    });
+  }
+
+  if (Object.keys(skinsData.ranks).length > 0) {
+    content += `\n☑️ LAST ACT RANKs:\n`;
+  
+    for (let episode in skinsData.ranks) {
+      content += `   ✅ ${episode}: ${skinsData.ranks[episode]}\n`;
+    }
+  }
+  
 
   content += `\n☑️ Account Level = ${skinsData.level}\n`;
   content += `☑️ ${skinsData.vp} EXTRA VP (VALORANT POINTS) IN ACCOUNT.\n`;
   content += `☑️ ${skinsData.rp} RP (RADIANITE POINTS) IN ACCOUNT.\n`;
-  content += `\n☑️ AFTER BUYING YOU WILL RECEIVE: USERNAME, PASSWORD, EMAIL ACCESS.\n`;
-  content += `\n⚠️If you face any issue or problem please message the seller, don't rush to give negative feedback, The seller will surely solve your problem.\n`;
-  content += `\n(-AFTER BUYING PLEASE DROP GOOD FEEDBACK/REVIEW-)\n`;
-  content += `\n======================================================================\n`;
-  content += `\n📩 Post Purchase Instructions📩\n`;
-  content += `\n🌐 Website for Email Login: https://mail.zsthost.com/\n`;
-  content += `\n🙏 After buying, please change the email address to your own leave a good feedback after confirming the order. ❤️\n`;
+  content += `\n☑️ AFTER BUYING YOU WILL RECEIVE:`;
+  content += `\n   ✅ USERNAME.`;
+  content += `\n   ✅ PASSWORD.`;
+  content += `\n   ✅ EMAIL ACCESS.\n`;
+  content += `\n⚠️If you face any issues, please message the seller before leaving negative feedback. The seller will work with you to solve any problems.\n`;
 
   document.getElementById("content").value = content;
 }
@@ -171,8 +179,40 @@ document.getElementById("copyButton").addEventListener("click", function () {
 
   try {
     document.execCommand("copy");
-    alert("Content copied to clipboard!");
+    alert("Account Info to clipboard!");
   } catch (err) {
     alert("Failed to copy content.");
   }
+});
+
+
+document.getElementById("postPurchaseButton").addEventListener("click", function () {
+  // Custom predefined text
+  const customText = `📩 Post Purchase Instructions📩
+
+🌐 Website for Email Login: https://mail.zsthost.com/
+
+🙏 After buying, please change the email address to your own and leave a good feedback after confirming the order. ❤️`;
+
+  // Create a temporary textarea element to hold the text
+  const tempTextarea = document.createElement("textarea");
+  tempTextarea.value = customText;
+
+  // Add the textarea to the document so it's part of the DOM
+  document.body.appendChild(tempTextarea);
+
+  // Select the text inside the textarea
+  tempTextarea.select();
+  tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+
+  try {
+    // Execute the copy command
+    document.execCommand("copy");
+    alert("Post Purchase Info copied to clipboard!");
+  } catch (err) {
+    alert("Failed to copy custom text.");
+  }
+
+  // Remove the temporary textarea from the document
+  document.body.removeChild(tempTextarea);
 });
