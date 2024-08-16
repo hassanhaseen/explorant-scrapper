@@ -54,7 +54,7 @@ function processContent(doc) {
   }
 
   
-  console.log(`Store Count = ${storeItemCount} & NM COUNT = ${nmItemCount}`);
+  // console.log(`Store Count = ${storeItemCount} & NM COUNT = ${nmItemCount}`);
 
   skins.splice(0, storeItemCount + nmItemCount); // skips store items
 
