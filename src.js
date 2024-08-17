@@ -181,7 +181,6 @@ function displayContent(skinsData) {
   content += `\n   ✅ PASSWORD.`;
   content += `\n   ✅ EMAIL ACCESS.\n`;
   content += `\n⚠️If you face any issues, please message the seller before leaving negative feedback. The seller will work with you to solve any problems.\n`;
-  content += `\n🚫After Buying if you get the account banned/locked, Seller will NOT be responsible for it!\n`;
 
   document.getElementById("content").value = content;
 }
