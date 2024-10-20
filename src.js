@@ -8,7 +8,7 @@ document
   });
 
 function fetchContent(link) {
-  const corsProxy = "https://quiet-island-48032-994b7e102cf6.herokuapp.com/";
+  const corsProxy = "https://cors-anywhere.herokuapp.com/";
   fetch(corsProxy + link)
     .then((response) => response.text())
     .then((html) => {
